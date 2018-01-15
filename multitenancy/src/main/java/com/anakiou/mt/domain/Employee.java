@@ -4,76 +4,80 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Employee {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String firstName;
-	private String lastName;
-	private String department;
-	private String office;
-	
-	public Employee(){
-		
-	}
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EmpSeqGen")
+  @SequenceGenerator(name = "EmpSeqGen", sequenceName = "EMPLOYEE_IDENTIFIER")
+  private Long id;
 
-	public Employee(String firstName, String lastName, String department, String office) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.department = department;
-		this.office = office;
-	}
+  private String firstName;
 
-	public Long getId() {
-		return id;
-	}
+  private String lastName;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  private String department;
 
-	public String getFirstName() {
-		return firstName;
-	}
+  private String office;
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+  public Employee() {
 
-	public String getLastName() {
-		return lastName;
-	}
+  }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+  public Employee(String firstName, String lastName, String department, String office) {
+    super();
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.department = department;
+    this.office = office;
+  }
 
-	public String getDepartment() {
-		return department;
-	}
+  public Long getId() {
+    return id;
+  }
 
-	public void setDepartment(String department) {
-		this.department = department;
-	}
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-	public String getOffice() {
-		return office;
-	}
+  public String getFirstName() {
+    return firstName;
+  }
 
-	public void setOffice(String office) {
-		this.office = office;
-	}
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
 
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", department="
-				+ department + ", office=" + office + "]";
-	}
-	
-	
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public String getDepartment() {
+    return department;
+  }
+
+  public void setDepartment(String department) {
+    this.department = department;
+  }
+
+  public String getOffice() {
+    return office;
+  }
+
+  public void setOffice(String office) {
+    this.office = office;
+  }
+
+  @Override
+  public String toString() {
+    return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", department=" + department
+        + ", office=" + office + "]";
+  }
 
 }
